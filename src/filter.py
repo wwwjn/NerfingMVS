@@ -195,7 +195,9 @@ def main(args):
     gt_rgbs = load_rgbs_np(image_list, os.path.join(args.datadir, 'images'),
                            H=H, W=W)
     confidences = 1 - np.abs(pred_rgbs / 255.0 - gt_rgbs / 255.0).mean(-1)
-    save_path = [os.path.join(args.basedir, args.expname, 'filter', img_name.split('.')[0]) 
+    
+    save_path = [os.path.join(args.basedir, args.expname, 'filter', 
+                img_name.split('.')[0] + '.' + img_name.split('.')[1] + '.' + img_name.split('.')[2]) 
                  for img_name in image_list]
     info_list = [(gt_rgbs[i], pred_depths[i], confidences[i], save_path[i]) 
                  for i in range(N)]

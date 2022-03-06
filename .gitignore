@@ -1,3 +1,11 @@
+logs/ai_001_001/nerf/checkpoints
+logs/ai_001_001/depth_priors/*
+logs/ai_001_001/nerf/summary/*
+logs/ai_001_001/filter/
+data/*
+data-bak/*
+data/ai_001_001/dense/fused.ply
+logs/ai_001_001/depth_priors/
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

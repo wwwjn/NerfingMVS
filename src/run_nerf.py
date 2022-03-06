@@ -168,7 +168,8 @@ def render_path(render_poses, hwf, chunk, render_kwargs, image_list, sc,
 
         if savedir is not None:
             rgb8 = to8b(rgbs[-1])
-            frame_id = image_list[i].split('.')[0]
+            #frame_id = image_list[i].split('.')[0]
+            frame_id = image_list[i].split('.')[0] +'.'+ image_list[i].split('.')[1] +'.'+ image_list[i].split('.')[2]
             filename = os.path.join(savedir, '{}.png'.format(frame_id))
             imageio.imwrite(filename, rgb8)
             filename = os.path.join(savedir, '{}_depth.npy'.format(frame_id))
