@@ -43,7 +43,7 @@ def load_gt_depths(image_list, datadir, H=None, W=None):
     masks = []
 
     for image_name in image_list:
-        frame_id = image_name.split('.')[0]
+        frame_id = image_list[i].split('.')[0] +'.'+ image_list[i].split('.')[1] +'.'+ image_list[i].split('.')[2]
         depth_path = os.path.join(datadir, 'depth', '{}.png'.format(frame_id))
         depth = cv2.imread(depth_path, cv2.IMREAD_UNCHANGED)
         depth = depth.astype(np.float32) / 1000
@@ -64,7 +64,7 @@ def load_depths(image_list, datadir, H=None, W=None):
     depths = []
 
     for image_name in image_list:
-        frame_id = image_name.split('.')[0]
+        frame_id = image_list[i].split('.')[0] +'.'+ image_list[i].split('.')[1] +'.'+ image_list[i].split('.')[2]
         depth_path = os.path.join(datadir, '{}_depth.npy'.format(frame_id))
         if not os.path.exists(depth_path):
             depth_path = os.path.join(datadir, '{}.npy'.format(frame_id))

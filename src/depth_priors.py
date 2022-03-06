@@ -122,7 +122,7 @@ def train(args):
     with torch.no_grad():
         depth_model.eval()
         for i, image_name in enumerate(image_list):
-            frame_id = image_name.split('.')[0]
+            frame_id = image_list[i].split('.')[0] +'.'+ image_list[i].split('.')[1] +'.'+ image_list[i].split('.')[2]
             batch = images[i:i + 1]
             depth_pred = depth_model.forward(batch).cpu().numpy()
             depth_color = visualize_depth(depth_pred)
