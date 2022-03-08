@@ -1,0 +1,12 @@
+expname = bedroom
+basedir = ./logs
+datadir = ./data/bedroom
+
+factor = 2
+
+N_rand = 1024
+N_samples = 64
+
+use_viewdirs = True
+raw_noise_std = 1e0
+

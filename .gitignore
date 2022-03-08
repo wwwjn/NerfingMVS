@@ -1,7 +1,8 @@
-logs/ai_001_001/nerf/checkpoints
-logs/ai_001_001/depth_priors/*
-logs/ai_001_001/nerf/summary/*
-logs/ai_001_001/filter/
+logs/*/nerf/checkpoints
+logs/*/depth_priors/*
+logs/*/nerf/summary/*
+logs/*/filter/
+models/depth_priors/mc.pth
 data/*
 data-bak/*
 data/ai_001_001/dense/fused.ply

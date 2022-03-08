@@ -38,13 +38,18 @@ def load_colmap_data(realdir):
     with open(os.path.join(realdir, 'train.txt'), 'r') as f:
         lines = f.readlines()
         for line in lines:
+            # print("train: " + line.strip())
             for i in range(len(names)):
                 if names[i] == line.strip():
                     perm.append(i)
+
+                else: 
+                    print(names[i], line.strip())
     if os.path.exists(os.path.join(realdir, 'test.txt')):
         with open(os.path.join(realdir, 'test.txt'), 'r') as f:
             lines = f.readlines()
             for line in lines:
+                # print("test: " + line.strip())
                 for i in range(len(names)):
                     if names[i] == line.strip():
                         perm.append(i)
