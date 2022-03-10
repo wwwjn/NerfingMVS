@@ -29,23 +29,37 @@ def load_colmap_data(realdir):
     bottom = np.array([0,0,0,1.]).reshape([1,4])
 
     names = [imdata[k].name for k in imdata]
+    
+    # add for test
+    #names.remove('frame.0027.color.jpg')
+    
     print( 'Images #', len(names))
     perm = []
     with open(os.path.join(realdir, 'train.txt'), 'r') as f:
         lines = f.readlines()
         for line in lines:
+            # print("train: " + line.strip())
             for i in range(len(names)):
                 if names[i] == line.strip():
                     perm.append(i)
+
+                else: 
+                    print(names[i], line.strip())
     if os.path.exists(os.path.join(realdir, 'test.txt')):
         with open(os.path.join(realdir, 'test.txt'), 'r') as f:
             lines = f.readlines()
             for line in lines:
+                # print("test: " + line.strip())
                 for i in range(len(names)):
                     if names[i] == line.strip():
                         perm.append(i)
+    
+        
     if len(names) != len(perm):
+        print('Len perm is ', len(perm))
         print('COLMAP fails for some images!')
+        print(names)
+        print(perm)
         exit()
     for k in imdata:
         im = imdata[k]
@@ -75,7 +89,10 @@ def save_poses(basedir, poses, pts3d, perm):
     for k in pts3d:
         pts_arr.append(pts3d[k].xyz)
         cams = [0] * poses.shape[-1]
+        print(pts3d[k].image_ids)
         for ind in pts3d[k].image_ids:
+            #  print(ind)  # 93
+            # print(len(cams))  # a 91
             if len(cams) < ind - 1:
                 print('ERROR: the correct camera poses for current points cannot be accessed')
                 return

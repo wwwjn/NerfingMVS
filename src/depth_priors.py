@@ -83,6 +83,10 @@ def train(args):
         batch = images_train[i_batch:i_batch + N_rand_depth]
         depth_gt, mask_gt = depths_train[i_batch:i_batch + N_rand_depth], depths_mask_train[i_batch:i_batch + N_rand_depth]
         depth_pred = depth_model(batch)
+        print(depth_pred.shape, depth_gt.shape, mask_gt.shape)
+        if(len(list(depth_pred.shape))==2):
+            depth_pred = depth_pred.unsqueeze(dim=0)
+        print(depth_pred.shape, depth_gt.shape, mask_gt.shape)
         loss = compute_depth_loss(depth_pred, depth_gt, mask_gt)
 
         optimizer_depth.zero_grad()
