@@ -1,4 +1,8 @@
-
+logs/depth_prior/*
+data/*/db*
+data/*/images_2/
+data/*/poses_bounds.npy
+data/*/sparse/*
 data/*/dense/fused.ply.vis
 data/*/dense/fused.ply
 # Byte-compiled / optimized / DLL files
