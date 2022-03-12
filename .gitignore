@@ -3,6 +3,7 @@ logs/*/depth_priors/*
 logs/*/nerf/summary/*
 logs/*/filter/
 models/depth_priors/mc.pth
+data/*
 data/ai_001_001
 data/Hypersim_raw_data
 data-bak/*
