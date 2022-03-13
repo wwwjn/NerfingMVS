@@ -497,15 +497,14 @@ def train(args):
                 render_poses = poses_tensor[i_test]
                 depth_priors = depth_priors[i_test]
                 depth_confidences = depth_confidences[i_test]
-                image_list = image_list[i_test]
+                image_list = list(np.array(image_list)[i_test])
             else:
                 testsavedir = os.path.join(save_path, 'results', 
                                            'renderonly_{}_{:06d}'.format('train', start))
                 render_poses = poses_tensor[i_train]
                 depth_priors = depth_priors[i_train]
                 depth_confidences = depth_confidences[i_train]
-                image_list = image_list[i_train]
-
+                image_list = list(np.array(image_list)[i_train])
             os.makedirs(testsavedir, exist_ok=True)
             rgbs, disps, depths = render_path(render_poses, hwf, args.chunk, render_kwargs_test, sc=sc,
                                           depth_priors=torch.from_numpy(depth_priors).to(device),
@@ -513,7 +512,9 @@ def train(args):
                                           savedir=testsavedir, render_factor=args.render_factor, 
                                           image_list=image_list)
             print('Done rendering', testsavedir)
-    
+            imageio.mimwrite(os.path.join(testsavedir, 'video.mp4'),
+                                             to8b(rgbs), fps=30, quality=8)
+           
             return
 
     # Prepare raybatch tensor if batching random rays
