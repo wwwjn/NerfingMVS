@@ -490,12 +490,13 @@ def train(args):
     # Short circuit if only rendering out from trained model
     if args.render_only:
         print('RENDER ONLY')
+        render_poses = torch.from_numpy(render_poses).to(device)
         with torch.no_grad():
             if args.render_test:
                 i_render = i_train + i_test
                 testsavedir = os.path.join(save_path, 'results', 
                                            'renderonly_{}_{:06d}'.format('test', start))
-                render_poses = poses_tensor[i_render]
+                render_poses = render_poses[i_render]
                 depth_priors = depth_priors[i_render]
                 depth_confidences = depth_confidences[i_render]
                 image_list = list(np.array(image_list)[i_render])
