@@ -1,5 +1,6 @@
 # NerfingMVS
 
+For CS231A course project, a modified version of orginial paper: Uses docker for COLMAP, and tests on different dataset.
 
 > NerfingMVS: Guided Optimization of Neural Radiance Fields for Indoor Multi-view Stereo  
 > [Yi Wei](https://weiyithu.github.io/), [Shaohui Liu](http://b1ueber2y.me/), [Yongming Rao](https://raoyongming.github.io/), [Wang Zhao](https://github.com/thuzhaowang), [Jiwen Lu](http://ivg.au.tsinghua.edu.cn/Jiwen_Lu/), [Jie Zhou](https://scholar.google.com/citations?user=6a79aPwAAAAJ&hl=en&authuser=1)  
